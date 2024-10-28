@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações de Pessoas</title>
+    <script src="pessoas.js"></script>
+</head>
+<body>
+    <h1>Informações Calculadas</h1>
+
+    <button onclick="calcularMediaIdades()">Média das Idades</button>
+    <button onclick="mostrarHomemMaisVelho()">Homem Mais Velho</button>
+    <button onclick="mostrarMaiorSalario()">Maior Salário</button>
+
+    <div id="resultadoMediaIdades"></div>
+    <div id="resultadoHomemMaisVelho"></div>
+    <div id="resultadoMaiorSalario"></div>
+
+    <script>
+        function calcularMediaIdades() {
+            const media = pessoas.reduce((soma, pessoa) => soma + pessoa.idade, 0) / pessoas.length;
+            document.getElementById("resultadoMediaIdades").innerHTML = `<p>Média das idades: ${media.toFixed(2)}</p>`;
+        }
+
+        function mostrarHomemMaisVelho() {
+            const homemMaisVelho = pessoas
+                .filter(pessoa => pessoa.genero === 'masculino')
+                .reduce((maisVelho, pessoa) => pessoa.idade > maisVelho.idade ? pessoa : maisVelho);
+
+            document.getElementById("resultadoHomemMaisVelho").innerHTML = `
+                <h2>Homem Mais Velho</h2>
+                <p>Nome: ${homemMaisVelho.nome}</p>
+                <img src="${homemMaisVelho.foto}" alt="${homemMaisVelho.nome}" width="100">
+                <p>Idade: ${homemMaisVelho.idade}</p>
+                <p>Profissão: ${homemMaisVelho.profissao}</p>
+            `;
+        }
+
+        function mostrarMaiorSalario() {
+            const maiorSalario = pessoas.reduce((maior, pessoa) => parseFloat(pessoa.salario) > parseFloat(maior.salario) ? pessoa : maior);
+
+            document.getElementById("resultadoMaiorSalario").innerHTML = `
+                <h2>Maior Salário</h2>
+                <p>Nome: ${maiorSalario.nome}</p>
+                <img src="${maiorSalario.foto}" alt="${maiorSalario.nome}" width="100">
+                <p>Idade: ${maiorSalario.idade}</p>
+                <p>Profissão: ${maiorSalario.profissao}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
