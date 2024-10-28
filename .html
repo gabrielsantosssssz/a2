@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pessoas</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            border: 2px solid;
+            width: 250px;
+            padding: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .card.male {
+            border-color: green;
+            background-color: #e0ffe0;
+        }
+        .card.female {
+            border-color: orange;
+            background-color: #fff0e0;
+        }
+        .card-header {
+            font-weight: bold;
+            font-size: 18px;
+            background-color: #ccc;
+            padding: 5px;
+        }
+        .card-body {
+            padding: 10px 0;
+        }
+        .card-footer {
+            background-color: #eee;
+            padding: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="peopleContainer"></div>
+
+    <script src="pessoas.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
